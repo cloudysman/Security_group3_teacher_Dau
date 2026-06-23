@@ -1,0 +1,14 @@
+
+
+  SupplyChainTracker
+    ✔ sets the deployer as owner and authorizes it
+    ✔ creates a product and stores a hash
+    ✔ blocks unauthorized accounts from creating products (access control)
+    ✔ advances status only in the correct order
+    ✔ rejects skipping a status (business rule on-chain)
+    ✔ verifies genuine data as true and tampered data as false
+    ✔ records an append-only history
+
+
+  7 passing (680ms)
+

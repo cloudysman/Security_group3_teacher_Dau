@@ -1,0 +1,17 @@
+# Dependencies (large, regenerated with: npm install)
+node_modules/
+
+# Hardhat build output
+artifacts/
+cache/
+
+# Frontend build output
+dist/
+
+# Logs and temporary files
+*.log
+~$*
+
+# OS files
+Thumbs.db
+.DS_Store

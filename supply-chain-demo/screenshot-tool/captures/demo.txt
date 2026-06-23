@@ -1,0 +1,64 @@
+------------------------------------------------------------------------
+BLOCKCHAIN-BASED SUPPLY CHAIN TRACKING SYSTEM - DEMO RUN
+------------------------------------------------------------------------
+Manufacturer (owner): 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Distributor         : 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+Retailer            : 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+Customer            : 0x90F79bf6EB2c4f870365E785982E1f101E93b906
+------------------------------------------------------------------------
+Contract deployed at: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+------------------------------------------------------------------------
+STEP 1 - Owner authorizes participants
+Authorize distributor
+   tx hash     : 0xf3d776259e076b131ed341e32d6f4ffb23db50e122e27074638c083d93da3e8e
+   block number: 2
+   from        : 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+   gas used    : 47271
+Authorize retailer
+   tx hash     : 0xa76a0866595ff1365062faf2c5671abbc0fe34996892ba27ee05e20e5d8868c4
+   block number: 3
+   from        : 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+   gas used    : 47259
+------------------------------------------------------------------------
+STEP 2 - Manufacturer creates a product
+Create product ("Vaccine Batch A", origin "Hanoi Factory", serial "SN-2026-0001")
+   tx hash     : 0x62e2020b01c3c58bf6e7e3336f17732caedbf14664ae98ed42cd894adfe50f6c
+   block number: 4
+   from        : 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+   gas used    : 297540
+   product id  : 1
+   stored hash : 0x2bdac562c02ccbcd94e74dd6aa77cdff268749c32105169912659168e4e8a320
+   status      : Created
+------------------------------------------------------------------------
+STEP 3 - Status updates (signed by different participants)
+Distributor -> Shipped
+   tx hash     : 0x360bcbaae0299776347c43b744e3e4c13dab4f4fd50bd1a90cf677bb17f80d00
+   block number: 5
+   from        : 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+   gas used    : 107125
+Retailer -> Received
+   tx hash     : 0xfdce6267071735dbc5f8c25f3b87fab7f9b1cf79ed267a93c6970f309d3848f8
+   block number: 6
+   from        : 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC
+   gas used    : 107065
+Manufacturer -> Sold
+   tx hash     : 0x93297b86649da21856b428dded56d8a31bad9698a2fc95580875e6e9bddaf6de
+   block number: 7
+   from        : 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+   gas used    : 107053
+------------------------------------------------------------------------
+STEP 4 - Access control: unauthorized account is rejected
+   Rejected as expected -> "VM Exception while processing transaction: reverted with reason string 'Not an authorized participant'"
+------------------------------------------------------------------------
+STEP 5 - Customer verifies product integrity
+   Verify with ORIGINAL data  -> true  (expected true)
+   Verify with TAMPERED serial -> false  (expected false)
+------------------------------------------------------------------------
+STEP 6 - Audit trail / product history
+   #0  Created   by 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266  @2026-06-22T08:03:07.000Z  "Product created"
+   #1  Shipped   by 0x70997970C51812dc3A010C7d01b50e0d17dc79C8  @2026-06-22T08:03:08.000Z  "Shipped from warehouse"
+   #2  Received  by 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC  @2026-06-22T08:03:09.000Z  "Received at store"
+   #3  Sold      by 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266  @2026-06-22T08:03:10.000Z  "Sold to customer"
+------------------------------------------------------------------------
+DEMO COMPLETE.
+------------------------------------------------------------------------
